@@ -1,0 +1,87 @@
+@import '../../styles/variables.scss';
+
+.modal {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    transform: scale(0);
+}
+.modal_active {
+    transform: scale(1);
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.modal__content {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 40px;
+    max-width: 750px;
+    width: 100%;
+    background-color: $light-background;
+    box-shadow: $box-shadow;
+    border-radius: $border-radius;
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    svg {
+        transition: .3s;
+    }
+    &:hover {
+        svg {
+            transform: rotate(360deg);
+        }
+    }
+}
+
+.day {
+    .day__temp {
+        font-weight: 500;
+        font-size: 60px;
+        color: $primary-color;
+        margin-bottom: 12px;
+    }
+    .day__name {
+        font-size: 25px;
+        color: #000;
+        line-height: 30px;
+        margin-bottom: 12px;
+    }
+    .img {
+        svg {
+            width: 53px;
+            height: 53px;
+            margin-bottom: 12px;
+        }
+    }
+    .day__time,
+    .day__city {
+        font-size: 15px;
+        color: $base-color;
+    }
+
+}
+.indicator__value2 {
+    color: var(#{--text-color-dark});
+}
