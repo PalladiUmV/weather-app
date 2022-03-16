@@ -45,7 +45,6 @@ const Header = () => {
 
 
     const changeCityWeather = (e) => {
-        console.log('Header change City')
         dispatch({
             type: 'SET_TITLE_CITY',
             payload: e.label,

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Days } from './components/Days/Days'
 import { ThisDay } from './components/ThisDay/ThisDay'
 import { ThisDayInfo } from './components/ThisDayInfo/ThisDayInfo'
