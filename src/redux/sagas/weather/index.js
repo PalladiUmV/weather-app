@@ -2,7 +2,8 @@ import { takeEvery, put, call, fork, all } from 'redux-saga/effects'
 
 
 async function getWeather(latLon = 'lat=55.75&lon=37.61') {
-    const request = await fetch(`https://api.openweathermap.org/data/2.5/onecall?${latLon}&exclude=minutely,hourly&appid=b5ce410db6e49d3f9950995e237dd598&units=metric&lang=ru
+    const key = 'b5ce410db6e49d3f9950995e237dd598';
+    const request = await fetch(`https://api.openweathermap.org/data/2.5/onecall?${latLon}&exclude=minutely,hourly&appid=${key}&units=metric&lang=ru
     `);
     const data = await request.json();
     return data;
