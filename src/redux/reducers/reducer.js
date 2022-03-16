@@ -29,7 +29,6 @@ const reducer = (state = initialState, action) => {
             const index = action.payload;
             const { daily } = state.data;
             const newItem = daily.find((item, idx) => idx === index);
-            console.log(newItem)
             return {
                 ...state,
                 modalData: [newItem],
