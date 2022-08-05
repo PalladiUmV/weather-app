@@ -1,5 +1,7 @@
-export const changeCssRootVariables = (theme) => {
-    const root = document.querySelector(':root');
+import { Theme } from "../context/ThemeContext";
+
+export const changeCssRootVariables = (theme: Theme) => {
+    const root = document.querySelector(':root') as HTMLElement;
 
     const components = [
         'body-background',

@@ -1,21 +1,21 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
 import { GlobalSvgSelector } from '../../../../assets/icons/global/GlobalSvgSelector'
+import { useTypedSelector } from '../../../../hooks/useTypedSelector'
+
 
 import s from './ThisDay.module.scss'
 
 
 export const ThisDay = () => {
-    const data = useSelector((state) => state.data);
-    const cityName = useSelector((state) => state.cityName);
+    const data = useTypedSelector((state) => state.weather.data);
+    const { cityName } = useTypedSelector((state) => state.weather);
     const { current: { temp, dt }, timezone_offset, } = data;
     const { icon, description } = data.current.weather[0];
 
 
-    const getData = () => {
-        let date = new Date((dt + timezone_offset - 10800) * 1000);
-        date = `${("0" + date.getHours()).slice(-2)}:${("0" + date.getMinutes()).slice(-2)}`;
-        return date;
+    const getData = (): string => {
+        let currentDate = new Date((dt + timezone_offset - 10800) * 1000);
+        let parceCurrentDate = `${("0" + currentDate.getHours()).slice(-2)}:${("0" + currentDate.getMinutes()).slice(-2)}`;
+        return parceCurrentDate;
     }
     return (
         <div className={s.this__day}>

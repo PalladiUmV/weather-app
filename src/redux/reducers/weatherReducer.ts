@@ -1,40 +1,43 @@
-const initialState = {
-    data: [],
-    modalData: [],
+import { IWeather, WeatherAction, WeatherActionTypes } from "../../types/weather";
+
+const initialState: IWeather = {
+    data: null,
+    modalData: null,
     loading: true,
     popup: false,
     cityName: 'Москва',
 }
 
-const reducer = (state = initialState, action) => {
+export const weatherReducer = (state = initialState, action: WeatherAction): IWeather => {
     switch (action.type) {
-        case 'FETCH_WEATHER_REQUEST':
+        case WeatherActionTypes.FETCH_WEATHER_REQUEST:
             return {
                 ...state,
-                loading: true
+                data: null,
+                loading: true,
             };
-        case 'FETCH_WEATHER_SUCCESS':
+        case WeatherActionTypes.FETCH_WEATHER_SUCCESS:
             return {
                 ...state,
                 data: action.payload,
                 loading: false
             };
-        case 'POPUP_CLOSE':
+        case WeatherActionTypes.POPUP_CLOSE:
             return {
                 ...state,
-                modalData: [],
+                modalData: null,
                 popup: false,
             };
-        case 'POPUP_OPEN':
+        case WeatherActionTypes.POPUP_OPEN:
             const index = action.payload;
             const { daily } = state.data;
-            const newItem = daily.find((item, idx) => idx === index);
+            const newItem = daily.find((item: any, idx: number) => idx === index);
             return {
                 ...state,
                 modalData: [newItem],
                 popup: true,
             }
-        case 'SET_TITLE_CITY':
+        case WeatherActionTypes.SET_TITLE_CITY:
             return {
                 ...state,
                 cityName: action.payload,
@@ -45,6 +48,6 @@ const reducer = (state = initialState, action) => {
     }
 }
 
-export default reducer;
+export default weatherReducer;
 
 

@@ -1,6 +1,10 @@
-import React from 'react'
+import { FC } from "react";
 
-export const IndicatorSvgSelector = ({ id }) => {
+interface Props {
+    id: string;
+}
+
+export const IndicatorSvgSelector: FC<Props> = ({ id }) => {
     switch (id) {
         case 'temp':
             return (

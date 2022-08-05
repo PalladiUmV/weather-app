@@ -1,9 +1,8 @@
-import React from 'react'
-
 import s from './Days.module.scss'
+import { FC } from 'react'
 
 
-export const Tabs = () => {
+export const Tabs: FC = () => {
     const tabs = [
         {
             value: 'На неделю'

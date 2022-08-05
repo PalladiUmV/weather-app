@@ -1,12 +1,14 @@
-import { React } from 'react';
+import { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import Select from 'react-select'
 import { GlobalSvgSelector } from '../../assets/icons/global/GlobalSvgSelector'
+import { Theme } from '../../context/ThemeContext';
 import { useTheme } from '../../hooks/useTheme';
+import { WeatherAction, WeatherActionTypes } from '../../types/weather';
 import s from './Header.module.scss'
 
 
-const Header = () => {
+const Header: FC = () => {
     const dispatch = useDispatch();
     const theme = useTheme();
 
@@ -19,7 +21,7 @@ const Header = () => {
         { value: 'lat=59.89&lon=30.26', label: 'Санкт-Петербург' },
     ]
     const colourStyles = {
-        control: (styles) => ({
+        control: (styles: any) => ({
             ...styles,
             backgroundColor: theme.theme === 'dark' ? '#4f4f4f' : 'rgba(71, 147, 255, 0.2)',
             color: theme.theme === 'dark' ? '#fff' : '#000',
@@ -28,11 +30,11 @@ const Header = () => {
             border: 'none',
             borderRadius: '10px',
         }),
-        singleValue: (styles) => ({
+        singleValue: (styles: any) => ({
             ...styles,
             color: theme.theme === 'dark' ? '#fff' : '#000',
         }),
-        input: (styles) => ({
+        input: (styles: any) => ({
             ...styles,
             color: theme.theme === 'dark' ? '#fff' : '#000',
         }),
@@ -40,13 +42,13 @@ const Header = () => {
 
 
     const changeTheme = () => {
-        theme.changeTheme(theme.theme === 'light' ? 'dark' : 'light')
+        theme.changeTheme(theme.theme === Theme.LIGHT ? Theme.DARK : Theme.LIGHT)
     }
 
 
-    const changeCityWeather = (e) => {
-        dispatch({
-            type: 'SET_TITLE_CITY',
+    const changeCityWeather = (e: any) => {
+        dispatch<WeatherAction>({
+            type: WeatherActionTypes.SET_TITLE_CITY,
             payload: e.label,
         })
         dispatch({

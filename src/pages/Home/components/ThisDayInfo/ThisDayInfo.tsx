@@ -1,14 +1,20 @@
-import React from 'react'
-import { useSelector } from 'react-redux';
+import { FC } from 'react';
 import cloud from '../../../../assets/images/cloud.png';
+import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 
 import s from './ThisDayInfo.module.scss';
 import { ThisDayItem } from './ThisDayItem';
 
 
-export const ThisDayInfo = () => {
+export interface Item {
+    icon_id: string;
+    name: string;
+    value: string;
+}
 
-    const data = useSelector(state => state.data);
+export const ThisDayInfo: FC = () => {
+
+    const { data } = useTypedSelector(state => state.weather);
     const { temp, feels_like, pressure, wind_speed } = data.current;
 
     const items = [
@@ -36,7 +42,7 @@ export const ThisDayInfo = () => {
     return (
         <div className={s.this__day_info}>
             <div className={s.this__day_info_items}>
-                {items.map(item => {
+                {items.map((item: Item) => {
                     return <ThisDayItem key={item.icon_id} item={item} />
                 }
                 )}

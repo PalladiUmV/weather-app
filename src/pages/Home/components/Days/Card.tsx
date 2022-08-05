@@ -1,19 +1,18 @@
-import React from 'react'
 import { GlobalSvgSelector } from '../../../../assets/icons/global/GlobalSvgSelector';
 import { useDispatch } from 'react-redux';
-
 import s from './Days.module.scss'
+import { WeatherAction, WeatherActionTypes } from '../../../../types/weather';
 
 
-export const Card = ({ days, index }) => {
+export const Card = ({ days, index }: any) => {
 
     const { day, day_info, icon_id, temp_day, temp_night, info } = days;
 
     const dispatch = useDispatch();
 
     const clickCard = () => {
-        dispatch({
-            type: 'POPUP_OPEN',
+        dispatch<WeatherAction>({
+            type: WeatherActionTypes.POPUP_OPEN,
             payload: index + 1
         })
     }

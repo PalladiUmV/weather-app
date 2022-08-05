@@ -2,8 +2,7 @@
 
 .this__day {
     padding: 20px;
-    max-width: 400px;
-    width: 100%;
+    width: 400px;
     background-color: var(#{--components-background-default});
     box-shadow: $box-shadow;
     border-radius: $border-radius;
@@ -11,7 +10,7 @@
 
 .top__block {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     gap: 30px;
     width: 100%;
@@ -20,37 +19,37 @@
     .this__temp {
         font-size: 96px;
         font-weight: 500;
-        color: $primary-color;  
+        color: $primary-color;
     }
+
     .this__day_name {
         font-size: 40px;
         color: var(#{--text-color-default});
     }
+
     .this__img {
         width: 150px;
         color: var(#{--text-color-default});
         text-align: center;
-       
+
         svg {
             fill: var(#{--text-color-default});
             width: 119px;
             height: 119px;
         }
-        .description{
+
+        .description {
             padding-top: -3px;
             font-size: 13px;
         }
     }
-    
-    
-    
-}   
+}
 
 .bottom__block {
+
     .this__time,
     .this__city {
         color: $base-color;
         font-size: 25px;
     }
 }
-
